@@ -1,0 +1,5 @@
+{
+  "ConnectionStrings": {
+    "Restaurante": "Server=DESKTOP-DKIC2SS; Database=Restaurante; Trusted_Connection=True;"
+  }
+}

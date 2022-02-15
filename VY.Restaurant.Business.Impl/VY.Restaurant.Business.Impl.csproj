@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\VY.Restaurant.Business.Contracts\VY.Restaurant.Business.Contracts.csproj" />
+    <ProjectReference Include="..\VY.Restaurant.Data.Impl\VY.Restaurant.Data.Impl.csproj" />
+  </ItemGroup>
+	
+</Project>
