@@ -11,8 +11,5 @@ namespace VY.Restaurant.Data.Contracts.Data
         public string Codigo { get; set; }
         public int CapacidadMax { get; set; }
         public int CapacidadMin { get; set; }
-        public Guid IdGrupo { get; set; }
-
-        public virtual GrupoEntity IdGrupoNavigation { get; set; }
     }
 }

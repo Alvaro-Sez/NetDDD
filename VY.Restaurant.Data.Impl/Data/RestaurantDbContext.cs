@@ -21,6 +21,7 @@ namespace VY.Restaurant.Data.Impl.Data
         public virtual DbSet<MesaEntity> Mesas { get; set; }
 
 
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasAnnotation("Relational:Collation", "Modern_Spanish_CI_AS");
@@ -28,6 +29,8 @@ namespace VY.Restaurant.Data.Impl.Data
             modelBuilder.Entity<ClienteEntity>(entity =>
             {
                 entity.ToTable("Cliente");
+
+                entity.HasIndex(e => e.IdGrupo, "IX_Cliente_Id_Grupo");
 
                 entity.Property(e => e.Id).ValueGeneratedNever();
 
@@ -41,7 +44,6 @@ namespace VY.Restaurant.Data.Impl.Data
                 entity.HasOne(d => d.IdGrupoNavigation)
                     .WithMany(p => p.Clientes)
                     .HasForeignKey(d => d.IdGrupo)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Cliente_Grupo");
             });
 
@@ -64,24 +66,14 @@ namespace VY.Restaurant.Data.Impl.Data
 
             modelBuilder.Entity<MesaEntity>(entity =>
             {
-                entity.HasKey(e => e.IdGrupo);
-
                 entity.ToTable("Mesa");
 
-                entity.Property(e => e.IdGrupo)
-                    .ValueGeneratedNever()
-                    .HasColumnName("Id_Grupo");
+                entity.Property(e => e.Id).ValueGeneratedNever();
 
                 entity.Property(e => e.Codigo)
                     .IsRequired()
                     .HasMaxLength(50)
                     .IsUnicode(false);
-
-                entity.HasOne(d => d.IdGrupoNavigation)
-                    .WithOne(p => p.Mesa)
-                    .HasForeignKey<MesaEntity>(d => d.IdGrupo)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Mesa_Grupo");
             });
 
             OnModelCreatingPartial(modelBuilder);

@@ -38,13 +38,13 @@ namespace VY.Restaurant.Data.Impl.Services
                 Codigo = groupDom.GroupCode,
                 NumeroPersonas = groupDom.Clients.Count,
                 HoraReserva = groupDom.Hour,
-                Mesa = new MesaEntity()
+                /*Mesa = new MesaEntity()
                 {
                     Id = Guid.NewGuid(),
                     Codigo = groupDom.TableAssigned.code,
                     CapacidadMax = groupDom.TableAssigned.MaxCapacity,
                     CapacidadMin = groupDom.TableAssigned.MinCapacity,
-                },
+                },*/
                 Clientes = groupDom.Clients.Select(client => new ClienteEntity()
                 {
                     Id = Guid.NewGuid(),

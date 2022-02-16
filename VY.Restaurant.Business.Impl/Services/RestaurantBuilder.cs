@@ -12,15 +12,12 @@ namespace VY.Restaurant.Business.Impl.Services
     public class RestaurantBuilder : IRestaurantBuilder
     {
 
-        public RestaurantBuilder()
-        {
-
-        }
         public RestaurantContext Build(RestaurantDto restDto)
         {
-            var clients = BuildClients(restDto.Clientes);
-            var groups = BuildGroups(restDto.Grupos);
-            var tables = BuildTables(restDto.Mesas);
+
+            var clients = restDto.Clientes.Count > 0 ? BuildClients(restDto.Clientes) : null;
+            var groups = restDto.Grupos.Count > 0 ? BuildGroups(restDto.Grupos) : null;
+            var tables = restDto.Mesas.Count > 0 ? BuildTables(restDto.Mesas) : null;
             
             RestaurantContext context = new RestaurantContext()
             {
@@ -76,5 +73,8 @@ namespace VY.Restaurant.Business.Impl.Services
             }
             return tables;
         }
+
+
+        
     }
 }

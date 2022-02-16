@@ -9,7 +9,7 @@ namespace VY.Restaurant.Data.Contracts.Data
     {
         public Guid Id { get; set; }
         public string Nombre { get; set; }
-        public Guid IdGrupo { get; set; }
+        public Guid? IdGrupo { get; set; }
 
         public virtual GrupoEntity IdGrupoNavigation { get; set; }
     }

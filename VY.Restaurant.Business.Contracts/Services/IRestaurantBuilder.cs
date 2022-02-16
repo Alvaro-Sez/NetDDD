@@ -11,5 +11,6 @@ namespace VY.Restaurant.Business.Contracts.Services
     public interface IRestaurantBuilder
     {
         public RestaurantContext Build(RestaurantDto restDto);
+        
     }
 }
